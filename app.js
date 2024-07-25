@@ -43,7 +43,7 @@ function sendToWhatsApp() {
 
     for (let product of selectedProducts) {
         const productQuantity = document.getElementById(`${product.value}Quantity`).value;
-        productDetails += `${product.value}: ${productQuantity} Pcs \n`;
+        productDetails += `- ${product.value}: ${productQuantity} Pcs \n`;
     }
 
     if (productDetails === '') {
