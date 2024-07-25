@@ -51,7 +51,7 @@ function sendToWhatsApp() {
         return;
     }
 
-    const message = `Buyer Name: ${buyerName}\nPhone Number: ${phoneNumber}\nSeller: ${seller}\nProducts:\n${productDetails}`;
+    const message = `Nama Pembeli: ${buyerName}\nNomor Handphone: ${phoneNumber}\nBeli dari siapa: ${seller}\nProduk yang dibeli:\n${productDetails}`;
     const encodedMessage = encodeURIComponent(message);
 
     const whatsappNumber = '+6282299097492'; // Replace with the actual WhatsApp number
