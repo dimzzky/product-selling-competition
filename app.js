@@ -76,7 +76,7 @@ function sendToWhatsApp() {
         productDetails += `- ${product.value}: ${productQuantity} Pcs \n`;
     }
 
-    const message = `Dibeli dari: PT. SINAR ANTJOL - BU LODAN \n Nama Pembeli: ${buyerName}\nNomor Handphone: ${phoneNumber}\nBeli dari siapa: ${seller}\nProduk yang dibeli:\n${productDetails}`;
+    const message = ` Nama Pembeli: ${buyerName}\n Beli di: SA Lodan\n Beli dari siapa: ${seller}\nProduk yang dibeli:\n${productDetails}`;
     const encodedMessage = encodeURIComponent(message);
 
     const whatsappNumber = '+6282299097492'; // Replace with the actual WhatsApp number
