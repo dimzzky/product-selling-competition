@@ -10,13 +10,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const productList = document.getElementById('productList');
 
     addProductBtn.addEventListener('click', function () {
+        addProductEntry();
+    });
+
+    function addProductEntry() {
         const productEntry = document.createElement('div');
         productEntry.classList.add('form-group', 'product-entry');
 
         const deleteBtn = document.createElement('button');
         deleteBtn.type = 'button';
         deleteBtn.classList.add('btn', 'btn-danger');
-        deleteBtn.innerText = 'Hapus';
+        deleteBtn.innerText = 'Delete';
         deleteBtn.addEventListener('click', function () {
             productEntry.remove();
         });
@@ -25,8 +29,8 @@ document.addEventListener('DOMContentLoaded', function () {
         productSelect.classList.add('form-control', 'product-select');
         productSelect.innerHTML = `
             <option value="" disabled selected>Pilih produk</option>
-            <option value="AYU POP TOILET SOAP PAPAYA">AYU POP PAPAYA</option>
-            <option value="AYU POP TOILET SOAP PAPAYA SNACK BOX">AYU POP PAPAYA SNACK BOX</option>
+            <option value="AYU POP PAPAYA">AYU POP PAPAYA</option>
+            <option value="AYU POP PAPAYA SNACK BOX">AYU POP PAPAYA SNACK BOX</option>
             <option value="B-29 CREAM B2 15000GR PLW PACK">B-29 CREAM B2 15000GR PLW PACK</option>
             <option value="B-29 CREAM B500 YELLOW 150GR PLW PACK">B-29 CREAM B500 YELLOW 150GR PLW PACK</option>
             <option value="B-29 CREAM C 460 K 430GR CUP">B-29 CREAM C 460 K 430GR CUP</option>
@@ -69,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
             persist: false,
             create: true,
         });
-    });
+    }
 
     window.onload = resetForm;
 
@@ -116,15 +120,25 @@ function sendToWhatsApp() {
     const seller = Array.from(document.getElementById('seller').selectedOptions).map(option => option.value).join(', ');
 
     const productEntries = document.querySelectorAll('.product-entry');
-    let productDetails = '';
+    const productQuantities = {};
 
     productEntries.forEach(entry => {
         const product = entry.querySelector('.product-select').value;
-        const quantity = entry.querySelector('input[type="number"]').value;
-        productDetails += `- ${product}: ${quantity} Pcs \n`;
+        const quantity = parseInt(entry.querySelector('input[type="number"]').value, 10);
+
+        if (productQuantities[product]) {
+            productQuantities[product] += quantity;
+        } else {
+            productQuantities[product] = quantity;
+        }
     });
 
-    const message = `Nama Pembeli: ${buyerName}\nBeli dimana: SINAR ANTJOL - LODAN \nBeli dari siapa: ${seller}\nProduk yang dibeli:\n${productDetails}`;
+    let productDetails = '';
+    for (const [product, quantity] of Object.entries(productQuantities)) {
+        productDetails += `- ${product}: ${quantity} Pcs \n`;
+    }
+
+    const message = `Dibeli dari: PT. SINAR ANTJOL - BU LODAN \n Nama Pembeli: ${buyerName}\nBeli dari siapa: ${seller}\nProduk yang dibeli:\n${productDetails}`;
     const encodedMessage = encodeURIComponent(message);
 
     const whatsappNumber = '+6282299097492'; // Replace with the actual WhatsApp number
