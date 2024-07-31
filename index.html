@@ -19,6 +19,20 @@
         h2 {
             font-size: 1.5rem;
         }
+
+        .product-entry {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .product-entry .form-control {
+            flex: 1;
+        }
+
+        .product-entry .btn-danger {
+            flex: 0 0 auto;
+        }
     </style>
 </head>
 
@@ -35,28 +49,24 @@
                     <label for="buyerName">Nama Pembeli</label>
                     <input type="text" class="form-control" id="buyerName" name="buyerName" required>
                 </div>
-
                 <div class="form-group">
                     <label for="seller">Beli dari siapa:</label>
                     <select id="seller" autocomplete="off" class="form-control" placeholder="Pilih penjual">
-                        <option>Pilih seller</option>
                         <option>MISTANG</option>
-                        <option>RESTU</option>
                         <option>RISKO</option>
                         <option>GHOZALI</option>
-                        <option>NINDI</option>
+                        <option>RESTU</option>
+                        <option>NINDi</option>
                         <option>IMEL</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="buyerName">Pilih produk</label>
+                    <label for="">Pilih produk</label>
                 </div>
-                <div id="productsContainer"></div>
-                <div id="quantities" class="form-group"></div>
-
-                <div class="form-group">
-                    <button type="button" class="btn btn-primary" onclick="addProduct()">Tambah produk</button>
+                <div id="productList" class="form-group">
+                    <label>Pilih produk</label>
                 </div>
+                <button type="button" class="btn btn-primary mb-3" id="addProductBtn">Tambah Produk</button>
 
                 <button type="button" class="btn btn-success mb-5 btn-lg btn-block" onclick="sendToWhatsApp()">Kirim <i
                         class="fab fa-whatsapp" style="color: white;"></i></button>
