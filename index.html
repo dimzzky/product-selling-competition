@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selling Competition Form</title>
     <link rel="icon" href="assets/images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.bootstrap4.min.css" rel="stylesheet">
     <style>
-        /* Additional styles to ensure mobile-friendliness */
         .container {
             max-width: 100%;
             padding: 0 1rem;
@@ -37,87 +37,32 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="phoneNumber">Nomor Handphone</label>
-                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" required>
-                </div>
-
-                <div class="form-group">
                     <label for="seller">Beli dari siapa:</label>
                     <select id="seller" autocomplete="off" class="form-control" placeholder="Pilih penjual">
-                        <option>MOONSTAR</option>
+                        <option>Pilih seller</option>
                         <option>MISTANG</option>
+                        <option>RESTU</option>
                         <option>RISKO</option>
                         <option>GHOZALI</option>
-                        <option>NINDY</option>
+                        <option>NINDI</option>
                         <option>IMEL</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="buyerName">Pilih produk</label>
+                </div>
+                <div id="productsContainer"></div>
+                <div id="quantities" class="form-group"></div>
 
                 <div class="form-group">
-                    <label for="products">Pilih produk</label>
-                    <select id="products" name="products[]" class="form-control" multiple>
-                        <option value="AYU POP TOILET SOAP PAPAYA">AYU
-                            POP TOILET SOAP PAPAYA</option>
-                        <option value="AYU POP TOILET SOAP PAPAYA SNACK BOX">AYU POP TOILET SOAP
-                            PAPAYA SNACK BOX</option>
-                        <option value="B-29 CREAM B2 15000GR PLW PACK">B-29 CREAM B2 15000GR PLW PACK</option>
-                        <option value="B-29 CREAM B500 YELLOW 150GR PLW PACK">B-29 CREAM B500 YELLOW 150GR PLW PACK
-                        </option>
-                        <option value="B-29 CREAM C 460 K 430GR CUP">B-29 CREAM C 460 K 430GR CUP</option>
-                        <option value="B-29 DISHWASH FRESH LIME 750ML SPOUT POUCH">B-29 DISHWASH FRESH LIME 750ML
-                            SPOUT
-                            POUCH</option>
-                        <option value="B-29 DISHWASH LIME+KEMANGI 750ML SPOUT POUCH">B-29 DISHWASH LIME+KEMANGI
-                            750ML
-                            SPOUT
-                            POUCH</option>
-                        <option value="B-29 PW SOFTENER PINK 200GR/24PCS GST BAG">B-29 PW SOFTENER PINK 200GR
-                        </option>
-                        <option value="B-29 PW SOFTENER PINK 410GR/12PCS GST BAG">B-29 PW SOFTENER PINK 410GR
-                        </option>
-                        <option value="INTENSE FOR DRY HAIR/PURPLE 200ML">INTENSE FOR DRY HAIR/PURPLE 200ML</option>
-                        <option value="INTENSE FOR NORMAL HAIR/GREEN 200ML">INTENSE FOR NORMAL HAIR/GREEN 200ML
-                        </option>
-                        <option value="INTENSE FOR OILY HAIR/ORANGE 200ML">INTENSE FOR OILY HAIR/ORANGE 200ML
-                        </option>
-                        <option value="INTENSE HAIRTONIC YELLOW 35ML">INTENSE HAIRTONIC YELLOW 35ML</option>
-                        <option value="KRIS BODYMIST HAPPY FLOWER/PINK 100 ML BTL">KRIS BODYMIST HAPPY FLOWER/PINK
-                            100
-                            ML
-                            BTL</option>
-                        <option value="KRIS HAIRMIST CHARMING/PURPLE 20ML BTL">KRIS HAIRMIST CHARMING/PURPLE 20ML
-                            BTL
-                        </option>
-                        <option value="KRIS HBL BLOOMING NORDIC COTTON/BLUE 100ML BTL">KRIS HBL BLOOMING NORDIC
-                            COTTON/BLUE
-                            100ML BTL</option>
-                        <option value="KRIS HBL HAPPY BERRY/RED 100ML BTL">KRIS HBL HAPPY BERRY/RED 100ML BTL
-                        </option>
-                        <option value="KRIS HBL NOURISHED CARE/GREEN 100ML">KRIS HBL NOURISHED
-                            CARE/GREEN 100ML</option>
-                        <option value="MEDISOFT HAND WASH SOFT & MILK/WHITE 500ML">MEDISOFT HAND WASH
-                            SOFT & MILK/WHITE 500ML</option>
-                        <option value="SEHAT BW MILKY FRESH MILK/WHITE 200 ML">SEHAT BW MILKY FRESH MILK/WHITE 200
-                            ML</option>
-                        <option value="SEHAT INDONESIAKU TS RED/RED DOUBLE PROTECTION 70GR">SEHAT INDONESIAKU TS
-                            RED/RED DOUBLE PROTECTION 70GR</option>
-                        <option value="SEHAT JUNIOR TOILET SOAP BUBBLE GUM/LIGHT BLUE 65GR">SEHAT JUNIOR
-                            TOILET SOAP BUBBLE GUM/LIGHT BLUE 65GR</option>
-                        <option value="SEHAT MILK TOILET SOAP WITH SHEA BUTTER/LIGHT BLUE 100GR">SEHAT MILK
-                            TOILET SOAP WITH SHEA BUTTER/LIGHT BLUE 100GR</option>
-                        <option value="WOW DISHWASH LIME 240ML">WOW DISHWASH LIME 240ML</option>
-                        <option value="WOW DISHWASH LIME 780ML">WOW DISHWASH LIME
-                            780ML</option>
-                    </select>
+                    <button type="button" class="btn btn-primary" onclick="addProduct()">Tambah produk</button>
                 </div>
-                <div id="quantities" class="form-group "></div>
 
-                <button type="button" class="btn btn-success mb-5 btn-lg btn-block"
-                    onclick="sendToWhatsApp()">Kirim</button>
+                <button type="button" class="btn btn-success mb-5 btn-lg btn-block" onclick="sendToWhatsApp()">Kirim <i
+                        class="fab fa-whatsapp" style="color: white;"></i></button>
             </form>
         </div>
     </div>
-
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
