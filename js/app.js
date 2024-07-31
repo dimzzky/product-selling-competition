@@ -138,10 +138,10 @@ function sendToWhatsApp() {
         productDetails += `- ${product}: ${quantity} Pcs \n`;
     }
 
-    const message = `Dibeli dari: PT. SINAR ANTJOL - BU LODAN \n Nama Pembeli: ${buyerName}\nBeli dari siapa: ${seller}\nProduk yang dibeli:\n${productDetails}`;
+    const message = `Nama Pembeli: ${buyerName}\nBeli di: SINAR ANTJOL - LODAN \nBeli dari siapa: ${seller}\nProduk yang dibeli:\n${productDetails}`;
     const encodedMessage = encodeURIComponent(message);
 
-    const whatsappNumber = '+6282299097492'; // Replace with the actual WhatsApp number
+    const whatsappNumber = '+6282210112901';
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
     Swal.fire({
